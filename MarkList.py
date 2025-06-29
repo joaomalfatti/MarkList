@@ -75,15 +75,24 @@ while True:
             print("O valor do carrinho atual está: ")
             total = sum([cart[1] for cart in needBy])
             print("O Total atual é: R$ {:.2f}.".format(total))
-            
+
     ### <=:=><=:=><=:=>AINDA FALTA MEXER<=:=><=:=><=:=>  ###        
     elif op == 3:
+        show_available_products(needBy)
         if len(needBy) == 0:
-            print("Escolha o código que você deseja devolver: ")
-            code = int(input())
-            if code == 0:
-                print("Obrigado por devolver o produto {}.".format(needBy[code][0]))
-                needBy.append(cart.pop(code))
+            print("Não a produtos para devolver.")
+        else:
+            print("Produtos no carrinho:")
+            show_available_products(needBy)
+            print("")
+            print("Escolha o código do produto para devolver: ")
+            cod = int(input())
+
+            if 0 <= cod < len(needBy):
+                print("Você devolveu o produto {}.".format(needBy[cod][0]))
+                cart.append(needBy.pop(cod))
+            else:
+                print("Código inválido.")
 
     print("")
     print("<=:=><=:=><=:=><=:=><=:=><=:=>")
