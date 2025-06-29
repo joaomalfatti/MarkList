@@ -56,8 +56,8 @@ while True:
             conf = int(input())
 
             if conf == 0:
-                needBy.append(cart.pop(cod_prod))
                 print("Produto {} Adicionado ao carrinho.".format(cart[cod_prod][0]))
+                needBy.append(cart.pop(cod_prod))
             else:
                 print("Produto {} não adicionado ao carrinho.".format(cart[cod_prod][0]))
             
@@ -90,6 +90,8 @@ while True:
 
             if 0 <= cod < len(needBy):
                 print("Você devolveu o produto {}.".format(needBy[cod][0]))
+                total = sum([cart[1] for cart in needBy])
+                print("O Total atual é: R$ {:.2f}.".format(total))
                 cart.append(needBy.pop(cod))
             else:
                 print("Código inválido.")
